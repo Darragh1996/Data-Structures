@@ -101,16 +101,19 @@ class DoublyLinkedList:
     Returns the value of the removed Node."""
 
     def remove_from_tail(self):
-        value = self.tail.value
-        self.tail.delete()
-        if self.tail == self.head:
-            self.tail = None
-            self.head = None
+        if self.tail:
+            value = self.tail.value
+            self.tail.delete()
+            if self.tail == self.head:
+                self.tail = None
+                self.head = None
+            else:
+                self.tail = self.tail.prev
+            if self.length > 0:
+                self.length -= 1
+            return value
         else:
-            self.tail = self.tail.prev
-        if self.length > 0:
-            self.length -= 1
-        return value
+            return None
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
