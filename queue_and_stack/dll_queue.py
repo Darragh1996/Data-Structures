@@ -1,6 +1,6 @@
-import sys
-# sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList as DBL
+import sys
+sys.path.append('../doubly_linked_list')
 
 
 class Queue:
@@ -18,5 +18,5 @@ class Queue:
             self.size -= 1
         return self.queue.remove_from_head()
 
-    def len(self):
+    def __len__(self):
         return self.size

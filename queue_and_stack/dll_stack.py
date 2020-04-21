@@ -1,7 +1,6 @@
-# import sys
-# sys.path.append('../doubly_linked_list')
+import sys
+sys.path.append('../doubly_linked_list')
 from doubly_linked_list import DoublyLinkedList as DBL
-# DBL = doubly_linked_list.DoublyLinkedList
 
 
 class Stack:
@@ -19,5 +18,5 @@ class Stack:
             self.size -= 1
         return self.stack.remove_from_tail()
 
-    def len(self):
+    def __len__(self):
         return self.size
