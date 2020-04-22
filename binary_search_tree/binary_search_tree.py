@@ -1,7 +1,7 @@
-import sys
-sys.path.append('../queue_and_stack')
-from dll_queue import Queue
-from dll_stack import Stack
+# import sys
+# sys.path.append('../queue_and_stack')
+# from dll_queue import Queue
+# from dll_stack import Stack
 
 
 class BinarySearchTree:
@@ -12,21 +12,51 @@ class BinarySearchTree:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        newTree = BinarySearchTree(value)
+        currentTree = self
+        inserted = False
+        while not inserted:
+            if value >= currentTree.value:
+                if currentTree.right == None:
+                    currentTree.right = newTree
+                    inserted = True
+                else:
+                    currentTree = currentTree.right
+            else:
+                if currentTree.left == None:
+                    currentTree.left = newTree
+                    inserted = True
+                else:
+                    currentTree = currentTree.left
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        elif target > self.value and self.right != None:
+            return self.right.contains(target)
+        elif target <= self.value and self.left != None:
+            return self.left.contains(target)
+        else:
+            return False
 
     # Return the maximum value found in the tree
+
     def get_max(self):
-        pass
+        currentTree = self
+        while currentTree.right != None:
+            currentTree = currentTree.right
+        return currentTree.value
 
     # Call the function `cb` on the value of each node
     # You may use a recursive or iterative approach
     def for_each(self, cb):
-        pass
+        cb(self.value)
+        if self.right != None:
+            self.right.for_each(cb)
+        if self.left != None:
+            self.left.for_each(cb)
 
     # DAY 2 Project -----------------------
 
